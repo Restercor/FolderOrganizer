@@ -39,7 +39,6 @@ def move_files(folder_path : Path) -> bool:
         if f.is_file(follow_symlinks=False):
             try:
                 for sortType, extentions in types.items():
-                    #print(sortType, extentions)
                     for extention in extentions:
                         if extention == f.suffix:
                             
@@ -53,11 +52,9 @@ def move_files(folder_path : Path) -> bool:
                             else:
                                 file_folder = folder_path / sortType
                                 
-                            #print(f"Found a file type! {extention}")
                             break
                         
                 if file_folder is None:
-                    #print(f"Found no similar extention for file {f}")
                     file_folder = folder_path / "Other"
                     
                 shutil.move(str(f), create_folder(file_folder))
